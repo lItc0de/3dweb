@@ -1,0 +1,2 @@
+- helper für controls
+- jump and run Spiel mit random generierten Welten
