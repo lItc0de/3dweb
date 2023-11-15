@@ -1,7 +1,7 @@
 import "./style.css";
 import * as THREE from "three";
 // import { MMDPhysics } from "three/addons/animation/MMDPhysics.js";
-import { Helpers, randomColor } from "./helpers";
+import { randomColor } from "./helpers";
 
 const SPEED = 0.3;
 const SIZE = 30;
@@ -171,16 +171,16 @@ const player = new Player();
 scene.add(player.mesh);
 
 // Helpers
-const helpers = new Helpers(camera, renderer.domElement, scene);
+// const helpers = new Helpers(camera, renderer.domElement, scene);
 
-const cubeFolder = helpers.gui.addFolder("Cube");
-// cubeFolder.add(cube.rotation, 'x', 0, Math.PI * 2)
-// cubeFolder.add(cube.rotation, 'y', 0, Math.PI * 2)
-// cubeFolder.add(cube.rotation, 'z', 0, Math.PI * 2)
-cubeFolder.open();
-const cameraFolder = helpers.gui.addFolder("Camera");
-cameraFolder.add(camera.position, "z", 0, 10);
-cameraFolder.open();
+// const cubeFolder = helpers.gui.addFolder("Cube");
+// // cubeFolder.add(cube.rotation, 'x', 0, Math.PI * 2)
+// // cubeFolder.add(cube.rotation, 'y', 0, Math.PI * 2)
+// // cubeFolder.add(cube.rotation, 'z', 0, Math.PI * 2)
+// cubeFolder.open();
+// const cameraFolder = helpers.gui.addFolder("Camera");
+// cameraFolder.add(camera.position, "z", 0, 10);
+// cameraFolder.open();
 
 camera.position.z = 30;
 
@@ -207,7 +207,7 @@ function animate() {
   // lights2.animate(elapsedTime);
   // lights3.animate(elapsedTime);
 
-  helpers.update();
+  // helpers.update();
   renderer.render(scene, camera);
 }
 
