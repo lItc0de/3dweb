@@ -3,7 +3,7 @@ import * as THREE from "three";
 // import { MMDPhysics } from "three/addons/animation/MMDPhysics.js";
 import { randomColor } from "./helpers";
 
-const SPEED = 0.3;
+// const SPEED = 0.3;
 const SIZE = 30;
 
 const scene = new THREE.Scene();
@@ -26,7 +26,7 @@ window.addEventListener("resize", () => {
 
 scene.background = new THREE.Color(0xf4cccc);
 
-const clock = new THREE.Clock();
+// const clock = new THREE.Clock();
 
 // Light
 const light = new THREE.AmbientLight(0xf4cccc, 2);
@@ -35,42 +35,42 @@ scene.add(light);
 const ambientLight = new THREE.AmbientLight(0xdb5d7c, 1.5); // soft white light
 scene.add(ambientLight);
 
-class Light {
-  group: THREE.Group;
-  light: THREE.PointLight;
+// class Light {
+//   group: THREE.Group;
+//   light: THREE.PointLight;
 
-  constructor(color: THREE.ColorRepresentation, rad: number) {
-    this.group = new THREE.Group();
-    this.light = new THREE.PointLight(color, 70, 300);
-    this.light.position.set(rad, 0, 0);
-    this.group.add(this.light);
-  }
-}
+//   constructor(color: THREE.ColorRepresentation, rad: number) {
+//     this.group = new THREE.Group();
+//     this.light = new THREE.PointLight(color, 70, 300);
+//     this.light.position.set(rad, 0, 0);
+//     this.group.add(this.light);
+//   }
+// }
 
-class Lights {
-  group: THREE.Group;
-  lights: Light[] = [];
+// class Lights {
+//   group: THREE.Group;
+//   lights: Light[] = [];
 
-  constructor(num: number, rad: number) {
-    this.group = new THREE.Group();
+//   constructor(num: number, rad: number) {
+//     this.group = new THREE.Group();
 
-    for (let index = 0; index < num; index++) {
-      const light = new Light(randomColor(), rad);
-      this.lights.push(light);
-      this.group.add(light.group);
+//     for (let index = 0; index < num; index++) {
+//       const light = new Light(randomColor(), rad);
+//       this.lights.push(light);
+//       this.group.add(light.group);
 
-      light.group.rotation.y = (index * Math.PI) / (num / 2);
-      light.group.rotation.x = Math.random() * 2 * Math.PI;
+//       light.group.rotation.y = (index * Math.PI) / (num / 2);
+//       light.group.rotation.x = Math.random() * 2 * Math.PI;
 
-      this.group.rotation.x = Math.random() * Math.PI;
-    }
-  }
+//       this.group.rotation.x = Math.random() * Math.PI;
+//     }
+//   }
 
-  animate(elapsedTime: number) {
-    this.group.rotation.x += Math.sin(elapsedTime) * 0.03 * Math.PI * SPEED;
-    this.group.rotation.y += Math.sin(elapsedTime) * 0.03 * Math.PI * SPEED;
-  }
-}
+//   animate(elapsedTime: number) {
+//     this.group.rotation.x += Math.sin(elapsedTime) * 0.03 * Math.PI * SPEED;
+//     this.group.rotation.y += Math.sin(elapsedTime) * 0.03 * Math.PI * SPEED;
+//   }
+// }
 
 // const lights1 = new Lights(10, 12);
 // scene.add(lights1.group);
@@ -82,13 +82,13 @@ class Lights {
 // scene.add(lights3.group);
 
 // Objects
-const sphereGeometry1 = new THREE.SphereGeometry(2, 20, 20);
+// const sphereGeometry1 = new THREE.SphereGeometry(2, 20, 20);
 
-const spereMaterial1 = new THREE.MeshStandardMaterial({
-  color: 0xffffff,
-  roughness: 0,
-  metalness: 0.1,
-});
+// const spereMaterial1 = new THREE.MeshStandardMaterial({
+//   color: 0xffffff,
+//   roughness: 0,
+//   metalness: 0.1,
+// });
 
 // const sphere1 = new THREE.Mesh(sphereGeometry1, spereMaterial1);
 // scene.add(sphere1);
@@ -97,7 +97,7 @@ class Planet {
   group: THREE.Group;
   mesh: THREE.Mesh;
 
-  constructor(rad: number) {
+  constructor() {
     const materialParameters = {
       color: randomColor(),
       roughness: 0,
@@ -118,12 +118,12 @@ class Planets {
   outerGroup: THREE.Group;
   planets: Planet[] = [];
 
-  constructor(num: number, rad: number) {
+  constructor(num: number) {
     this.innerGroup = new THREE.Group();
     this.outerGroup = new THREE.Group();
 
     for (let index = 0; index < num; index++) {
-      const planet = new Planet(rad);
+      const planet = new Planet();
       this.planets.push(planet);
       this.innerGroup.add(planet.group);
 
@@ -141,7 +141,7 @@ class Planets {
   }
 }
 
-const planetGroup1 = new Planets(9, 10);
+const planetGroup1 = new Planets(9);
 scene.add(planetGroup1.outerGroup);
 // planetGroup1.innerGroup.rotation.y += 0.9;
 // planetGroup1.outerGroup.rotation.z = 0.5 * Math.PI;
@@ -185,7 +185,7 @@ scene.add(player.mesh);
 camera.position.z = 30;
 
 function animate() {
-  const elapsedTime = clock.getElapsedTime();
+  // const elapsedTime = clock.getElapsedTime();
   requestAnimationFrame(animate);
 
   // planetGroup1.innerGroup.rotation.y +=
